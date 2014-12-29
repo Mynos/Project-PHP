@@ -9,7 +9,6 @@ get:
 cine:
     resource: "@cineBundle/Resources/config/routing.yml"
     prefix:   /
+    defaults: { _controller: InfocineBundle:Default:index }
+    
 
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation

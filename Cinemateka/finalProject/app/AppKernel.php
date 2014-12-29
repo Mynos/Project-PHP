@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Info\cineBundle\cineBundle(),
             new Info\getMoviesBundle\getBundle(),
-            new AppBundle\AppBundle(),
             new Info\postMoviesBundle\postBundle(),
         );
 

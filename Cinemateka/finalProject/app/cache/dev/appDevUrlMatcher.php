@@ -127,13 +127,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
+        if (0 === strpos($pathinfo, '/hello')) {
+            // post_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_homepage')), array (  '_controller' => 'Info\\postMoviesBundle\\Controller\\DefaultController::indexAction',));
             }
 
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+            // get_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_homepage')), array (  '_controller' => 'Info\\getMoviesBundle\\Controller\\DefaultController::indexAction',));
+            }
+
+        }
+
+        // cine_homepage
+        if (0 === strpos($pathinfo, '/cine') && preg_match('#^/cine/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cine_homepage')), array (  '_controller' => 'InfocineBundle:Default:index',));
         }
 
         // _welcome
