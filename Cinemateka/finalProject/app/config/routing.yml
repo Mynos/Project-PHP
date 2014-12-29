@@ -1,0 +1,15 @@
+post:
+    resource: "@postBundle/Resources/config/routing.yml"
+    prefix:   /
+
+get:
+    resource: "@getBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cine:
+    resource: "@cineBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
